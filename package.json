@@ -1,0 +1,26 @@
+{
+  "name": "bolzano",
+  "version": "0.0.1",
+  "description": "set union & interset etc operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoveKino/bolzano.git"
+  },
+  "keywords": [
+    "set",
+    "theory",
+    "union",
+    "interset",
+    "difference"
+  ],
+  "author": "ddchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoveKino/bolzano/issues"
+  },
+  "homepage": "https://github.com/LoveKino/bolzano#readme"
+}
