@@ -7,7 +7,7 @@ let {
 let iterate = require('./lib/iterate');
 
 let {
-    map, reduce, find, findIndex, forEach
+    map, reduce, find, findIndex, forEach, filter, any, exist
 } = require('./lib/fp');
 
 let contain = (list, item, fopts) => findIndex(list, item, fopts) !== -1;
@@ -81,6 +81,9 @@ module.exports = {
     findIndex,
     deRepeat,
     forEach,
+    filter,
+    any,
+    exist,
     get,
     delay,
     mergeMap
