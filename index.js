@@ -1,7 +1,7 @@
 'use strict';
 
 let {
-    isObject, funType, or, isString, isFalsy
+    isObject, funType, or, isString, isFalsy, likeArray
 } = require('basetype');
 
 let iterate = require('./lib/iterate');
@@ -69,7 +69,19 @@ let delay = (time) => new Promise((resolve) => {
     setTimeout(resolve, time);
 });
 
+let flat = (list) => {
+    if (likeArray(list) && !isString(list)) {
+        return reduce(list, (prev, item) => {
+            prev = prev.concat(flat(item));
+            return prev;
+        }, []);
+    } else {
+        return [list];
+    }
+};
+
 module.exports = {
+    flat,
     contain,
     difference,
     union,

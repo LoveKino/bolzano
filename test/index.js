@@ -3,7 +3,7 @@
 let assert = require('assert');
 
 let {
-    map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any
+    map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any, flat
 } = require('../index');
 
 describe('index', () => {
@@ -151,5 +151,11 @@ describe('index', () => {
     it('any', () => {
         assert.equal(any([2, 4, 9, 0], (v) => v < 3), false);
         assert.equal(any([2, 4, 9, 0], (v) => v < 11), true);
+    });
+
+    it('flat', () => {
+        assert.deepEqual(flat(1), [1]);
+        assert.deepEqual(flat([2, 4, 9, 0]), [2, 4, 9, 0]);
+        assert.deepEqual(flat([2, [4, [9]], 0]), [2, 4, 9, 0]);
     });
 });
