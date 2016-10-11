@@ -3,7 +3,7 @@
 let assert = require('assert');
 
 let {
-    map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any, flat
+    map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any, flat, delay, find, exist, compact
 } = require('../index');
 
 describe('index', () => {
@@ -20,6 +20,7 @@ describe('index', () => {
         }), [0, 'b']);
 
         assert.deepEqual(map([], v => v), []);
+        assert.deepEqual(map(null), []);
     });
 
     it('findIndex', () => {
@@ -44,6 +45,13 @@ describe('index', () => {
 
         // reduce with limit
         assert.equal(reduce([1, 2, 3, 4, 5], (prev, cur) => prev + cur, 0, (prev, item) => item >= 4), 6);
+
+        assert.equal(reduce({
+            a: 1,
+            b: 2,
+            c: 3,
+            d: 4
+        }, (prev, cur) => prev + cur, 0, (prev) => prev >= 6) <= 6, true);
     });
 
     it('contain', () => {
@@ -157,5 +165,24 @@ describe('index', () => {
         assert.deepEqual(flat(1), [1]);
         assert.deepEqual(flat([2, 4, 9, 0]), [2, 4, 9, 0]);
         assert.deepEqual(flat([2, [4, [9]], 0]), [2, 4, 9, 0]);
+    });
+
+    it('delay', () => {
+        return delay(10);
+    });
+
+    it('find', () => {
+        assert.equal(find([1, 2, 3], 2), 2);
+        assert.equal(find([1, 2, 3], 9), undefined);
+    });
+
+    it('exist', () => {
+        assert.equal(exist([2, 4, 9, 0], (v) => v < 3), true);
+        assert.equal(exist([2, 4, 9, 0], (v) => v < -1), false);
+    });
+
+    it('compact', () => {
+        assert.deepEqual(compact([null, 12, 3]), [12, 3]);
+        assert.deepEqual(compact([null, 12, 0, 3, undefined]), [12, 3]);
     });
 });
