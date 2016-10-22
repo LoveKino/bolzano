@@ -185,4 +185,10 @@ describe('index', () => {
         assert.deepEqual(compact([null, 12, 3]), [12, 3]);
         assert.deepEqual(compact([null, 12, 0, 3, undefined]), [12, 3]);
     });
+
+    it('map promise', () => {
+        return map(Promise.resolve([1, 2, 3]), (item) => ++item).then((ret) => {
+            assert.deepEqual(ret, [2, 3, 4]);
+        });
+    });
 });
