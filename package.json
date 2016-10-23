@@ -31,6 +31,6 @@
     "mocha-lcov-reporter": "^1.2.0"
   },
   "dependencies": {
-    "basetype": "^0.1.0"
+    "basetype": "^0.1.2"
   }
 }

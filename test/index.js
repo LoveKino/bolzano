@@ -2,6 +2,8 @@
 
 let assert = require('assert');
 
+let fs = require('fs');
+
 let {
     map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any, flat, delay, find, exist, compact
 } = require('../index');
@@ -189,6 +191,13 @@ describe('index', () => {
     it('map promise', () => {
         return map(Promise.resolve([1, 2, 3]), (item) => ++item).then((ret) => {
             assert.deepEqual(ret, [2, 3, 4]);
+        });
+    });
+
+    it('reduce stream', () => {
+        let stream = fs.createReadStream(__dirname + '/fixture/test.txt');
+        return reduce(stream, (prev, chunk) => prev + chunk, '').then(ret => {
+            assert.equal(ret, 'hello\n');
         });
     });
 });
