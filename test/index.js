@@ -5,7 +5,7 @@ let assert = require('assert');
 let fs = require('fs');
 
 let {
-    map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any, flat, delay, find, exist, compact
+    map, findIndex, reduce, contain, difference, union, interset, forEach, get, mergeMap, filter, any, flat, delay, find, exist, compact, reverse
 } = require('../index');
 
 describe('index', () => {
@@ -199,5 +199,9 @@ describe('index', () => {
         return reduce(stream, (prev, chunk) => prev + chunk, '').then(ret => {
             assert.equal(ret, 'hello\n');
         });
+    });
+
+    it('reverse', () => {
+        assert.deepEqual(reverse([1, 2, 3]), [3, 2, 1]);
     });
 });
