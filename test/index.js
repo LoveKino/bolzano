@@ -38,6 +38,11 @@ describe('index', () => {
         assert.equal(findIndex([3, 6, 8], 11), -1);
     });
 
+    it('findIndex', () => {
+        assert.equal(findIndex([3, 5, 6], (v) => v > 0), 0);
+        assert.equal(findIndex([3, 5, 6], (v) => v > 10), -1);
+    });
+
     it('reduce', () => {
         assert.equal(reduce([1, 2, 3], (prev, cur) => {
             return prev + cur;
