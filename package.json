@@ -1,6 +1,6 @@
 {
   "name": "bolzano",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "set union & interset etc operations",
   "main": "index.js",
   "scripts": {
